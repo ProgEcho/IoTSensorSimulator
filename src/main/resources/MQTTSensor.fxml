@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="de.thkoeln.sensorgui.control.MQTTSensorController"
+        style="-fx-background-color: #F0F4F8;">
+
+    <center>
+        <ScrollPane
+                fitToWidth="true"
+                style="-fx-background-color: transparent;"
+                BorderPane.alignment="CENTER">
+
+            <VBox
+                    spacing="25"
+                    alignment="TOP_CENTER"
+                    maxWidth="500"
+                    style="-fx-padding: 30; -fx-background-color: transparent;">
+
+                <Label
+                        text="MQTT Sensor Konfiguration"
+                        style="-fx-font-size: 24px;
+                           -fx-font-weight: bold;
+                           -fx-text-fill: #1A365D;"/>
+
+                <GridPane
+                        hgap="15"
+                        vgap="15"
+                        alignment="CENTER_LEFT">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+                    </columnConstraints>
+
+                    <Label
+                            text="Name:"
+                            style="-fx-text-fill: #2D3748;"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="0"/>
+                    <TextField
+                            fx:id="nameField"
+                            promptText="Sensorname"
+                            style="-fx-background-radius: 8px;
+                               -fx-border-color: #CBD5E0;
+                               -fx-border-radius: 8px;
+                               -fx-cursor: hand;"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="0"
+                            HBox.hgrow="ALWAYS"/>
+
+                    <Label
+                            text="Broker:"
+                            style="-fx-text-fill: #2D3748;"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="1"/>
+                    <ComboBox
+                            fx:id="brokerComboBox"
+                            style="-fx-background-radius: 8px;
+                               -fx-border-color: #CBD5E0;
+                               -fx-border-radius: 8px;"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="1"
+                            maxWidth="Infinity"/>
+
+                    <Label
+                            text="Basis-Topic:"
+                            style="-fx-text-fill: #2D3748;"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="2"/>
+                    <TextField
+                            fx:id="baseTopicField"
+                            promptText="Basis-Topic"
+                            style="-fx-background-radius: 8px;
+                               -fx-border-color: #CBD5E0;
+                               -fx-border-radius: 8px;"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="2"/>
+                </GridPane>
+
+                <VBox
+                        spacing="15"
+                        style="-fx-padding: 20;
+                           -fx-background-color: white;
+                           -fx-background-radius: 10px;
+                           -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                    <Label
+                            text="Sub-Sensoren"
+                            style="-fx-font-size: 18px;
+                               -fx-font-weight: bold;
+                               -fx-text-fill: #1A365D;"/>
+
+                    <VBox
+                            fx:id="subSensorContainer"
+                            spacing="10"/>
+
+                    <Button
+                            text="Neuen Subsensor hinzufügen"
+                            onAction="#handleAddSubsensor"
+                            style="-fx-background-color: #3182CE;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8px;
+                               -fx-font-size: 14px;
+                               -fx-cursor: hand;"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox
+                spacing="20"
+                alignment="CENTER"
+                style="-fx-padding: 20;">
+
+            <Button
+                    text="Erstellen"
+                    onAction="#handleSave"
+                    prefWidth="120"
+                    prefHeight="30"
+                    style="-fx-background-color: #2ECC71;
+                       -fx-text-fill: white;
+                       -fx-background-radius: 8px;
+                       -fx-font-size: 16px;
+                        -fx-cursor: hand;"
+                    HBox.hgrow="ALWAYS"/>
+
+            <Button
+                    text="Abbrechen"
+                    onAction="#handleCancel"
+                    prefWidth="120"
+                    prefHeight="30"
+                    style="-fx-background-color: #E53E3E;
+                       -fx-text-fill: white;
+                       -fx-background-radius: 8px;
+                       -fx-font-size: 16px;
+                       -fx-cursor: hand;"
+                    HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </bottom>
+</BorderPane>
